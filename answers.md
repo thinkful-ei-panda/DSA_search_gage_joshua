@@ -1,7 +1,36 @@
 ### Part 1: How many searches?
 Given a sorted list `3, 5, 6, 8, 11, 12, 14, 15, 17, 18` and using the recursive binary search algorithm, identify the sequence of numbers that each recursive call will search to try and find `8`.
 
+`3`
+
 Given a sorted list `3, 5, 6, 8, 11, 12, 14, 15, 17, 18` and using the recursive binary search algorithm, identify the sequence of numbers that each recursive call will search to try and find `16`.
+
+[]
+
+```
+const binarySearchAlgorithm = (intArr,key, start = null, end = null) => {
+  start = start === null ? 0 : start;
+  end = end === null ? intArr.length : end;
+
+  if(start > end){
+    return -1;
+  }
+
+  let currentInx = Math.floor((start + end) / 2);
+  let currentEle = intArr[currentInx];
+
+  if (currentEle === key){
+    return currentInx;
+  }
+  else if(currentEle < key){
+    return binarySearchAlgorithm(intArr , key , currentInx + 1 , end);
+  }else if (currentEle > key){
+    return binarySearchAlgorithm(intArr , key , start , currentInx - 1);
+  }
+  return currentInx;
+};
+```
+
 
 ### Part 2: Adding a React UI
 For exercises 1 and 2, you will be using a search algorithm to search for an item in a dataset. You will be testing the efficiency of 2 search algorithms, linear search and binary search. You will also have a UI (a simple textbox will do) through which you will be sending your input that you want to search. There is no server-side to this program. All of this should be done using **React**.
