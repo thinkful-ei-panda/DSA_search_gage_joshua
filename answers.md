@@ -50,6 +50,31 @@ see `dsa-react-search`
 ### Part 3: Find a book
 Imagine you are looking for a book in a library with a Dewey Decimal index. How would you go about it? Can you express this process as a search algorithm? Implement your algorithm to find a book whose Dewey and book title is provided.
 
+```
+const bookFinder = (intArr,key, start = null, end = null) => {
+  start = start === null ? 0 : start;
+  end = end === null ? intArr.length : end;
+  
+  if(start > end){
+    return `${key} isn't found`;
+  }
+  
+  let currentInx = Math.floor((start + end) / 2);
+  let currentEle = intArr[currentInx];
+  
+  if (currentEle.dewIndex === key){
+    return intArr[currentInx].name;
+  }
+  else if(currentEle.dewIndex < key){
+    return bookFinder(intArr , key , currentInx + 1 , end);
+  }else if (currentEle.dewIndex > key){
+    return bookFinder(intArr , key , start , currentInx - 1);
+  }
+  return intArr[currentInx].name;
+};
+```
+
+
 ### Part 4: Searching in a BST
 ** No coding is needed for these drills**. Once you have answered it, you can then code the tree and implement the traversal to see if your answer is correct.
 

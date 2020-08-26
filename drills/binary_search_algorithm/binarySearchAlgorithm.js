@@ -25,3 +25,5 @@ const binarySearchAlgorithm = (intArr,key, start = null, end = null) => {
 };
 
 log(binarySearchAlgorithm(STORE.intArr ,16));
+
+module.exports = {binarySearchAlgorithm};
