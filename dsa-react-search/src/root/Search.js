@@ -58,13 +58,34 @@ search = event => {
 
 }
 
+linSearch = ev => {
+  ev.preventDefault();
+  const {intArr} = this.state.store
+  const x = (int) =>{
+     for(let i = 0 ; i < intArr.length ; i++ ){
+       console.log(intArr[i]);
+       if(intArr[i] === Number(this.state.linearInput) ) return i+1 ;
+       if(i === intArr.length - 1 ){
+       return `ran ${i} number of times but nothing was found`
+      }
+    }
+  }
+
+  const res = x(this.state.linearInput)
+  this.setState({
+    value : res,
+    linearInput : ''            
+  })
+
+}
+
 render (){
     return(
         <div>
             <div>{this.state.value && this.state.value}</div>
             <IntTextBox
-                search =
-                {this.search}
+                search ={this.search}
+                linSearch = {this.linSearch}
                 binaryInput={this.handleBinaryInputChange}
                 linearInput={this.handleLinearInputChange}
                 state={this.state}

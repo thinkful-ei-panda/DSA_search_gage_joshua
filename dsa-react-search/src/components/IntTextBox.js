@@ -25,7 +25,7 @@ static defaultProps = {
                     </form>
                 </div>
                 <div className='text_Box_Main'>
-                    <form className='int_Form' onSubmit={this.props.search} onChange={this.props.linearInput}>
+                    <form className='int_Form' onSubmit={this.props.linSearch} onChange={this.props.linearInput}>
                         <label>Linear Search</label><br></br>
                         <input value={this.props.state.linearInput} name='linear_search_input' className='int__Input' required></input>
                         <button type='submit'>Submit</button>
