@@ -23,40 +23,45 @@ handleLinearInputChange = event => {
 };
 
 search = event => {
-    const binarySearchAlgorithm = (intArr,key, start = null, end = null) => {
+    event.preventDefault();
+    const binarySearchAlgorithm = (intArr,key, start = null, end = null, count = 0) => {
+        count++;
+
         start = start === null ? 0 : start;
         end = end === null ? intArr.length : end;
       
         if(start > end){
-          return -1;
+          return `Function rand ${count} number of times but returned nothing.`;
         }
       
         let currentInx = Math.floor((start + end) / 2);
         let currentEle = intArr[currentInx];
       
         if (currentEle === key){
-          return currentInx;
+          return count;
         }
         else if(currentEle < key){
-          return binarySearchAlgorithm(intArr , key , currentInx + 1 , end);
+          return binarySearchAlgorithm(intArr , key , currentInx + 1 , end, count);
         }else if (currentEle > key){
-          return binarySearchAlgorithm(intArr , key , start , currentInx - 1);
+          return binarySearchAlgorithm(intArr , key , start , currentInx - 1, count);
         }
-        return currentInx;
+        return count;
       };
+      
+      let {store} = this.state
 
-      this.setState({
-          store: this.state.store.sort((a,b) => a-b)
-        })
-        const {binary_search_input, linear_search_input} = event.target;
-      const result = binarySearchAlgorithm(this.state.store, event.value)
+      store = store.intArr.sort ((a,b) => a-b)
+
+      const result = binarySearchAlgorithm(store, this.state.binaryInput)
       this.setState ({value: result})
+      console.log(result)
+
 }
 
 render (){
     return(
         <div>
-            <div>{this.state.component && this.state.result}</div>
+            <div>{this.state.value && this.state.value}</div>
             <IntTextBox
                 search =
                 {this.search}
