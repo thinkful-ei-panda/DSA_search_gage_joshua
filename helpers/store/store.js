@@ -55,7 +55,8 @@ const STORE = {
     name : 'Lieutenant Selar',
     id :  24,
   }
-  ]
+  ],
+  tradeWeek : [128, 97, 121, 123, 98, 97, 105],
 };
 
 module.exports = {STORE};
