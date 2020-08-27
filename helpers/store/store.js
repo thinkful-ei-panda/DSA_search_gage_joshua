@@ -22,7 +22,8 @@ const STORE = {
       name : '980',
       dewIndex : 980.02,
     },
-  ]
+  ],
+  treeArray : [25, 15, 50, 10, 24, 35, 70, 4, 12, 18, 31, 44, 66, 90, 22]
 };
 
 module.exports = {STORE};
