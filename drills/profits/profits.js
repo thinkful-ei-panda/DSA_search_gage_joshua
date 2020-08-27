@@ -8,7 +8,7 @@ const profitsCal = arr =>{
     log(`arr[i] = ${arr[i]}, arr[i+1] = ${arr[i+1]}`);
     if(arr[i+1]) pro.push(arr[i] - arr[i+1]);
   }
-  log(pro)
+  log(pro);
   return pro.sort((a,b) => a-b)[pro.length - 1];
 };
 
